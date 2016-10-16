@@ -1,26 +1,4 @@
-function makeDroppable(e) {
-  e.preventDefault();
-}
 
-function dragImg(e) {
-  element.inputBlock = e.target.parentNode;
-  e.dataTransfer.setData("text/plain", e.target.id);
-}
-
-function dropImg(e) {
-  e.preventDefault();
-  var ouputBlock = e.target;
-  if (ouputBlock.getAttribute("class") !== "dropel")
-    return false;
-
-  var id = e.dataTransfer.getData("text/plain");
-  element.elem = element.getElement(element.inputBlock, id);//Сам эл-т
-
-  if (!element.setElement(element.elem, true))//убрать из источника
-    element.inputBlock.removeChild(element.elem);//если осталось 0 эл-в
-
-  element.addElement(ouputBlock, id);//добавление эл-та в приёмник
-}
 
 
 

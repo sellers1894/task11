@@ -3,33 +3,38 @@ var element = {
   inputBlock: null,//источник
   outputBlockL: null,//приёмник
 
-  getElement: function(parent, id){
-    var cols = document.querySelectorAll("#" + parent.id +" #" + id);
-    var el = false;
-    [].forEach.call(cols, function(col) {
-      el = col;
-    });
-    return el;
-  },
+  setElement: function(el, parent){
+    var id = el.childNodes[0].id;
+    var elements = parent.childNodes;
+    for (let i = 0, n = elements.length; i < n; i++){//есть ли уже такие
+      if (elements[i].childNodes.length)
+        if (elements[i].childNodes[0].id === id){
 
-  addElement: function(parent, id){
-    el = this.getElement(parent, id);
-
-    if (!el){
-      var clo = document.getElementById(id).cloneNode(true);
-      clo.getElementsByClassName('elem-count')[0].innerHTML = "(" + (1) + ")";
-      parent.appendChild(clo);
+          return this.incCount(elements[i].childNodes[0].childNodes);
+        }
     }
-    else
-      this.setElement(el, false);//добавить к текущему
+
+    var clo = el.cloneNode(true);
+    clo.ondragstart = drag;
+    var clo_info = clo.childNodes[0].childNodes;
+    clo_info[clo_info.length-1].innerHTML = "(" + (1) + ")";
+    parent.appendChild(clo);
   },
 
-  setElement: function(el, isTake){
-    var count = el.getElementsByClassName('elem-count')[0].innerHTML;
+
+
+  getCount: function(elem_info){
+    var count = elem_info[elem_info.length-1].innerHTML;
     count = count.slice(1);
     count = count.slice(0, -1);
-    count = isTake? parseInt(count)-1: parseInt(count)+1;
-    el.getElementsByClassName('elem-count')[0].innerHTML = "(" + (count) + ")";
-    return count;
+    return parseInt(count);
+  },
+
+  incCount: function(elem_info){
+    var count = elem_info[elem_info.length-1];
+    var countInt = count.innerHTML.slice(1);
+    countInt = countInt.slice(0, -1);
+    count.innerHTML = "(" + (++countInt) + ")";
+    return countInt;
   }
 };
