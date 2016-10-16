@@ -3,7 +3,15 @@
 var Formula = (function(){
 	var formula = [
 	[Atom("H", 2), Atom("O", 1)],
-	[Atom("Na", 1), Atom("O", 1), Atom("H", 1)]
+	[Atom("Na", 1), Atom("O", 1), Atom("H", 1)],
+	[Atom("C", 1), Atom("O", 2)],
+	[Atom("F", 1), Atom("O", 1)],
+	[Atom("Si", 1), Atom("O", 2)],
+	[Atom("H", 2), Atom("S", 4), Atom("O", 4)],
+	[Atom("H", 3), Atom("P", 4), Atom("O", 4)],
+	[Atom("Li", 2), Atom("O", 1), Atom("H", 1)],
+	[Atom("K", 2), Atom("O", 1)],
+	[Atom("Ca", 1), Atom("C", 3), Atom("O", 3)]
 	];
 
 	function getFormulas(){
