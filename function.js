@@ -1,22 +1,22 @@
 'use strict';
 function makeDroppable(e) {
-  e.preventDefault();
+	e.preventDefault();
 }
 
 function drag(e) {
-  element.inputBlock = e.target.parentNode;
-  element.elem = e.target;
-  e.dataTransfer.setData("text/plain", "");
+	element.inputBlock = e.target.parentNode;
+	element.elem = e.target;
+	e.dataTransfer.setData("text/plain", "");
 }
 
 function drop(e) {
-  e.preventDefault();
-  var ouputBlock = e.target;
-  if (ouputBlock.getAttribute("class") !== "dropel" || ouputBlock === element.inputBlock)
-    return;
+	e.preventDefault();
+	var ouputBlock = e.target;
+	if (ouputBlock.getAttribute("class") !== "dropel" || ouputBlock === element.inputBlock)
+		return;
 
-  var elem_info = element.elem.childNodes[0].childNodes;
-  var count = element.getCount(elem_info);
+	var elem_info = element.elem.childNodes[0].childNodes;
+	var count = element.getCount(elem_info);
   var isLast = count === 1;//если последний, то вырезвать
 
   element.setElement(element.elem, ouputBlock);
@@ -26,8 +26,6 @@ function drop(e) {
   else
   	element.inputBlock.removeChild(element.elem);
 }
-
-
 
 
 function addElement(molecule, parent){
@@ -52,3 +50,38 @@ function addElement(molecule, parent){
 	parent.appendChild(div);
 	return div;
 }
+
+
+
+function elemInfo(e){
+	var elem = e.target;
+	if (elem.tagName === "SPAN"){
+		elem = elem.parentNode;
+	}
+	else
+		if (elem.className === "dragg-elem")
+			elem = elem.childNodes[0];
+	var molecule = [];
+	var arr = elem.id.split("|");
+	arr.forEach(function(item){
+		let buf = item.split(",");
+		let atom = new Atom(buf[0], buf[1]);
+		molecule.push(atom);
+	});
+
+
+	info_panel.innerHTML = "";
+	var formulas = Formula.getFormulasOnAtoms(molecule);
+	formulas.forEach(function(item){
+		info_panel.innerHTML += "<p>";
+		item.forEach(function(item2){
+			info_panel.innerHTML += item2.tostring();
+		});
+		info_panel.innerHTML += "</p>"
+	});
+}
+
+
+	function create(){
+		alert("bla");
+	}

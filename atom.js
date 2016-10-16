@@ -10,10 +10,18 @@ var Atom = (function(name, count){
   function getCount(){
   	return countAtom;
   }
+  function compare(atom, count = false){
+    return (atom.getName() === this.getName() && (!count || atom.getName() === this.getName()));
+  }
+  function tostring(){
+    return nameAtom+countAtom;
+  }
 
   return {
     getName: getName,
-    getCount: getCount
+    getCount: getCount,
+    compare: compare,
+    tostring: tostring
   }
 
 });
