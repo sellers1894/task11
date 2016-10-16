@@ -1,4 +1,5 @@
 'use strict';
+/*Молекула. Состоит из атомов, + цвет и кол-во*/
 var Molecule = (function(){
   var molecule = [
   	{atoms: [Atom("H", 1)], color: "#6899F7", count: 10},

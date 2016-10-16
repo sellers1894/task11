@@ -1,4 +1,5 @@
 'use strict';
+/*Атом, составная часть молекулы*/
 var Atom = (function(name, count){
   var nameAtom = name;
   var countAtom = count;

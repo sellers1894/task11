@@ -1,4 +1,5 @@
 'use strict';
+/*Начальная загрузка. Глобальные переменные, назначение событий, заполнение*/
 var resurse_panel = document.getElementById("resurse");
 var create_panel = document.getElementById("create");
 
@@ -13,4 +14,3 @@ var mas = Molecule.getMolecule();
 for (let i = 0, n = mas.length; i < n; i++){
 	addElement(mas[i], resurse_panel).ondragstart = drag;
 }
-

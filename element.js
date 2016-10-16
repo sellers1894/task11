@@ -1,3 +1,4 @@
+'use strict';
 var element = {
   elem: null,//эл-т
   inputBlock: null,//источник
@@ -8,10 +9,8 @@ var element = {
     var elements = parent.childNodes;
     for (let i = 0, n = elements.length; i < n; i++){//есть ли уже такие
       if (elements[i].childNodes.length)
-        if (elements[i].childNodes[0].id === id){
-
+        if (elements[i].childNodes[0].id === id)
           return this.incCount(elements[i].childNodes[0].childNodes);
-        }
     }
 
     var clo = el.cloneNode(true);
@@ -23,7 +22,7 @@ var element = {
 
 
 
-  getCount: function(elem_info){
+  getCount: function(elem_info){//последний span содержит кол-во
     var count = elem_info[elem_info.length-1].innerHTML;
     count = count.slice(1);
     count = count.slice(0, -1);
