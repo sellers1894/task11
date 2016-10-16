@@ -29,11 +29,11 @@ var element = {
     return parseInt(count);
   },
 
-  incCount: function(elem_info){
+  incCount: function(elem_info, count_elem = 1){
     var count = elem_info[elem_info.length-1];
     var countInt = count.innerHTML.slice(1);
-    countInt = countInt.slice(0, -1);
-    count.innerHTML = "(" + (++countInt) + ")";
+    countInt = parseInt(countInt.slice(0, -1)) + count_elem;
+    count.innerHTML = "(" + (countInt) + ")";
     return countInt;
   }
 };

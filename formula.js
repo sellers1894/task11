@@ -27,22 +27,35 @@ var Formula = (function(){
 			if (b)
 				arr.push(atms);
 		});
-
-
-		// atoms.forEach(function(item){
-		// 	var b = true;
-		// 	formula.forEach(function(item2){
-		// 		b = false;
-		// 		item2.forEach(function(item3){
-		// 			if (item.compare(item3, true)){
-		// 				arr.push(item2);
-		// 				b = true;
-		// 			}
-		// 		})
-
-		// 	})
-		// });
 		return arr;
+	}
+
+	function getFormulaOnAtoms(atoms){
+		var ansv = null;
+		formula.forEach(function(atms){
+			var b = false;
+			var b1 = false;
+			if (atms.length === atoms.length){
+				b = true;
+				for (let i = 0, n = atms.length; i < n; i++){
+					b1 = false;
+					for (let j = 0; j < n; j++){
+						if (atms[i].compare(atoms[j], true)){
+							b1 = true;
+							break;
+						}
+					}
+					if (!b1){
+						b = false;
+						break;
+					}
+				}
+			}
+			if (b){
+				ansv = atms;
+			}
+		});
+		return ansv;
 	}
 
 	function size(){
@@ -52,6 +65,7 @@ var Formula = (function(){
 	return {
 		getFormulas: getFormulas,
 		getFormulasOnAtoms: getFormulasOnAtoms,
+		getFormulaOnAtoms: getFormulaOnAtoms,
 		size: size
 	}
 

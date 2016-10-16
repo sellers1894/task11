@@ -10,8 +10,8 @@ var Atom = (function(name, count){
   function getCount(){
   	return countAtom;
   }
-  function compare(atom, count = false){
-    return (atom.getName() === this.getName() && (!count || atom.getName() === this.getName()));
+  function compare(atom, count_atom = false){
+    return (atom.getName() === this.getName() && (!count_atom || atom.getCount() === this.getCount()));
   }
   function tostring(){
     return nameAtom+countAtom;
